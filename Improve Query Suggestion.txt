@@ -1,0 +1,24 @@
+
+To improve the performance of a query, we can consider the following optimizations:
+
+1. Use EXISTS instead of IN: 
+	Replace subqueries with EXISTS, as it can sometimes be more efficient. For example, instead of AND Tools.id = (JobsTools.affiliate_id), we can use EXISTS (SELECT 1 FROM affiliates WHERE id = JobsTools.affiliate_id AND deleted IS NULL).
+
+2. Avoid unnecessary columns in SELECT: 
+	Only select the columns that are necessary for your application. This can reduce the amount of data transferred and improve performance.
+
+3. Use a CASE statement for multiple conditions: 
+	If we have multiple conditions in your WHERE clause, consider using a CASE statement to simplify the logic and potentially improve performance.
+
+4. Consider using temporary tables: 
+	If the query is still slow after optimizations, we might consider using temporary tables to store intermediate results and reduce the complexity of the query.
+
+5. Update statistics and indexes: 
+	While not explicitly shown in the query, it is assumed that indexes and statistics on the relevant columns are updated. This ensures that the database optimizer can make efficient use of these resources to execute the query.
+	
+6. Simplified JOIN Conditions: 
+	The original query had complex JOIN conditions that used subqueries unnecessarily. The optimized query simplifies these conditions by directly comparing the IDs for JOIN operations, which is more efficient.
+
+7. Reduced the Number of Joins: 
+	Where possible, the optimized query reduces the number of JOIN operations by consolidating related information into fewer tables. This simplification helps improve query performance.
+
